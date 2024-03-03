@@ -4,13 +4,17 @@ for(var i=0;i<noOfDrums;i++)
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
         var button= this.innerHTML;
         soundmaker(button)
+        buttonAnimation(button);
+
 });
 
 }
 addEventListener("keydown",function(event) {
-    soundmaker(event.key)
+    soundmaker(event.key);
+    buttonAnimation(event.key);
 });
-function soundmaker(key) {
+function soundmaker(key)
+{
     switch (key) {
         case 'w':
             var kick=new Audio("sounds/kick-bass.mp3");
@@ -42,4 +46,11 @@ function soundmaker(key) {
             break;
     
     }
+}
+function buttonAnimation(currentKey)
+{
+    var CButton=document.querySelector("."+currentKey).classList.add("pressed");
+    setTimeout(function() {
+        CButton=document.querySelector("."+currentKey).classList.remove("pressed");
+    }, 100);
 }
